@@ -4,6 +4,7 @@ import tseslint from "@typescript-eslint/eslint-plugin";
 import tsParser from "@typescript-eslint/parser";
 import prettier from "eslint-config-prettier";
 import prettierPlugin from "eslint-plugin-prettier";
+import globalsVitest from 'globals-vitest';
 
 import wxtGlobals from './.wxt/eslint.config.js';
 
@@ -18,7 +19,7 @@ export default [
   },
   {
     languageOptions: {
-      globals: globals.browser,
+      globals: { ...globals.browser, ...globalsVitest },
       parser: tsParser,
       parserOptions: {
         ecmaVersion: "latest",
@@ -50,6 +51,7 @@ export default [
           tabWidth: 2,
           trailingComma: "es5",
           printWidth: 80,
+          endOfLine: "auto"
         },
       ],
       ...prettier.rules,
