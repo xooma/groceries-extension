@@ -1,8 +1,8 @@
 {
-  "extends": "./.wxt/tsconfig.json",
-  "compilerOptions": {
-    "types": [
-      "vitest/globals"
-    ]
-  }
+	"extends": "./.wxt/tsconfig.json",
+	"compilerOptions": {
+		"jsx": "preserve",
+		"jsxImportSource": "solid-js",
+		"types": ["browser", "solid-js"]
+	}
 }

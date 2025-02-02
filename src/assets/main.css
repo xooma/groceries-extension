@@ -1,1 +1,45 @@
 @import "tailwindcss";
+@plugin "daisyui";
+
+.app-icon-wrapper {
+  position: fixed;
+  top: 30%;
+  left: 0;
+  width: 20px;
+  height: 58px;
+  z-index: 9999;
+  cursor: pointer;
+}
+
+.app-icon {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  height: 48px;
+  width: 10px;
+  background-color: #ffb41a;
+  border-radius: 0 8px 8px 0;
+  display: flex;
+  z-index: 10000;
+  align-items: center;
+  justify-content: center;
+  transition: width 0.3s ease-in-out;
+}
+
+.app-icon.expanded {
+  width: 50px;
+}
+
+.logo {
+  opacity: 0;
+  width: 50px;
+  height: auto;
+  object-fit: contain;
+  transition: opacity 0.2s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.app-icon.expanded .logo {
+  opacity: 1;
+  transform: scale(1);
+}
