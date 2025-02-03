@@ -1,12 +1,15 @@
-import { saveRecipe } from "@/domain/save-recipe";
+import { storage } from "wxt/storage";
+
+import { SaveRecipe } from "@/core/domain";
 
 export default defineBackground(() => {
+  console.log("coucou");
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  browser.runtime.onMessage.addListener((message: any) => {
+  browser.runtime.onMessage.addListener(async (message: any) => {
     if (message.type === "reviewList") {
       browser.tabs.create({ url: browser.runtime.getURL("/resume.html") });
     } else if (message.type === "addRecipe") {
-      saveRecipe(message.recipe);
+      await new SaveRecipe(storage).execute(message.recipe);
     }
 
     return true;

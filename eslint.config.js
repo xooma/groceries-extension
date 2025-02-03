@@ -21,7 +21,7 @@ export default [
       "dist",
       "eslint.config.js",
       ".**/",
-      "postcss.config.js",
+      "postcss.config.cjs",
       "tailwind.config.js",
     ],
   },

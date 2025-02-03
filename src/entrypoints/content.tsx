@@ -5,13 +5,13 @@ import {
   createShadowRootUi,
 } from "wxt/client";
 import { defineContentScript } from "wxt/sandbox";
+import { storage } from "wxt/storage";
 
-import { getRecipeJson } from "@/domain/get-json-recipe";
-import type { RecipeJson } from "@/domain/interfaces";
-import Widget from "@/ui/Widget";
+import { RecipeJson } from "@/core/infrastructure/interfaces";
+import { GetJsonRecipe } from "@/core/domain";
+import { Widget } from "@/core/ui";
 
 import "@/assets/main.css";
-import { storage } from "wxt/storage";
 
 export default defineContentScript({
   matches: ["<all_urls>"],
@@ -20,7 +20,6 @@ export default defineContentScript({
     await storage.removeItem("local:savedRecipes");
 
     let uiInstance: ShadowRootContentScriptUi<() => void> | null = null;
-
     async function mountWidget(recipe: RecipeJson) {
       uiInstance = await createShadowRootUi(ctx, {
         name: "groceries-widget",
@@ -45,7 +44,7 @@ export default defineContentScript({
     }
 
     function checkForRecipe() {
-      const recipe = getRecipeJson();
+      const recipe = new GetJsonRecipe(document).execute();
 
       if (recipe) mountWidget(recipe);
       else unmountWidgetIfExists();

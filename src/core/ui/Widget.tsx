@@ -4,27 +4,24 @@ import addIcon from "@/assets/add.svg";
 import cartIcon from "@/assets/cart.svg";
 import logoIcon from "@/assets/logo.svg";
 
-import type { Message, RecipeJson } from "@/domain/interfaces";
-
 import "./Widget.css";
+import { RecipeJson } from "@/core/infrastructure/interfaces";
 
 type Props = {
   recipe: RecipeJson;
 };
 
-function Widget({ recipe }: Props) {
+export function Widget({ recipe }: Props) {
   const [hovered, setHovered] = createSignal(false);
 
   const addRecipe = () => {
-    browser.runtime
-      .sendMessage({ type: "addRecipe", recipe })
-      .then(console.log);
+    browser.runtime.sendMessage({ type: "addRecipe", recipe });
   };
 
   const reviewList = () => {
     browser.runtime.sendMessage({
       type: "reviewList",
-    } as Message);
+    });
   };
 
   return (
@@ -55,5 +52,3 @@ function Widget({ recipe }: Props) {
     </>
   );
 }
-
-export default Widget;
