@@ -5,7 +5,7 @@ export function getRecipeJson(): RecipeJson | undefined {
     'script[type="application/ld+json"]',
   );
 
-  // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const isValidRecipe = (data: any) =>
     typeof data === "object" &&
     data["@type"] === "Recipe" &&

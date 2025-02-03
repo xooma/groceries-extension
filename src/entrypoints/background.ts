@@ -1,16 +1,14 @@
 import { saveRecipe } from "@/domain/save-recipe";
 
 export default defineBackground(() => {
-  browser.runtime.onMessage.addListener(
-    // biome-ignore lint/suspicious/noExplicitAny: Chrome API
-    (message: any, sender, sendResponse) => {
-      if (message.type === "reviewList") {
-        browser.tabs.create({ url: browser.runtime.getURL("/resume.html") });
-      } else if (message.type === "addRecipe") {
-        saveRecipe(message.recipe);
-      }
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  browser.runtime.onMessage.addListener((message: any) => {
+    if (message.type === "reviewList") {
+      browser.tabs.create({ url: browser.runtime.getURL("/resume.html") });
+    } else if (message.type === "addRecipe") {
+      saveRecipe(message.recipe);
+    }
 
-      return true;
-    },
-  );
+    return true;
+  });
 });

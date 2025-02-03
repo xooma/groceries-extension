@@ -51,7 +51,7 @@ export default defineContentScript({
       else unmountWidgetIfExists();
     }
 
-    ctx.addEventListener(window, "wxt:locationchange", ({ newUrl }) => {
+    ctx.addEventListener(window, "wxt:locationchange", () => {
       checkForRecipe();
     });
 
