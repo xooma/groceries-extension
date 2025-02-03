@@ -3,6 +3,6 @@
 	"compilerOptions": {
 		"jsx": "preserve",
 		"jsxImportSource": "solid-js",
-		"types": ["browser", "solid-js"]
+		"types": ["browser", "solid-js", "vite/client"]
 	}
 }

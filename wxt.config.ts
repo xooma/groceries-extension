@@ -6,6 +6,6 @@ export default defineConfig({
   manifest: {
     name: "groceries-list",
     version: "1.0.0",
-    permissions: ["activeTab", "tabs", "storage"],
+    permissions: ["activeTab", "tabs", "storage", "background"],
   },
 });

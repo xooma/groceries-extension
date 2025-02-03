@@ -1,16 +1,14 @@
 import type { RecipeJson } from "@/domain/interfaces";
+import { storage } from "wxt/storage";
 
-export function saveRecipe(recipe: RecipeJson): void {
-  const savedRecipes = localStorage.getItem("savedRecipes_1234");
+export async function saveRecipe(recipe: RecipeJson): Promise<void> {
+  const savedRecipes: Array<RecipeJson> =
+    (await storage.getItem("local:savedRecipes")) || [];
+  savedRecipes.push(recipe);
 
-  if (savedRecipes && !savedRecipes.includes(recipe.name)) {
-    const savedRecipesArray: RecipeJson[] = JSON.parse(savedRecipes);
-
-    localStorage.setItem(
-      "savedRecipes",
-      JSON.stringify([...savedRecipesArray, recipe]),
-    );
+  if (!savedRecipes.includes(recipe)) {
+    await storage.setItem("local:savedRecipes", savedRecipes);
   } else {
-    localStorage.setItem("savedRecipes", JSON.stringify([recipe]));
+    await storage.setItem("local:savedRecipes", savedRecipes);
   }
 }
