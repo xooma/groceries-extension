@@ -3,7 +3,7 @@ import { defineBackground } from "wxt/sandbox";
 import { storage } from "wxt/storage";
 
 import { ListRecipes } from "@/core/domain";
-import { Cart } from "@/core/ui";
+import { Recipes } from "@/core/ui/recipes/Recipes";
 
 export default defineBackground({
   async main() {
@@ -15,7 +15,7 @@ export default defineBackground({
         () => (
           <>
             <Suspense fallback={<p>Loading...</p>}>
-              <Cart recipes={recipes} />
+              <Recipes recipes={recipes} />
             </Suspense>
           </>
         ),

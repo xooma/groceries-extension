@@ -1,0 +1,148 @@
+.cart-container {
+    padding: 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.collapse-checkbox {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.ingredients-row {
+    border-top: none !important;
+}
+
+.ingredients-row td {
+    padding-top: 0 !important;
+}
+
+.collapse {
+    width: 100%;
+    border-radius: 0.5rem;
+    overflow: hidden;
+}
+
+.collapse-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out, padding 0.3s ease-in-out;
+}
+
+.collapse-checkbox:checked ~ .collapse-content {
+    max-height: 1000px;
+}
+
+.collapse-title .expand-icon {
+    transition: transform 0.3s ease;
+}
+
+.collapse-checkbox:checked ~ * .expand-icon,
+.collapse-checkbox:checked + .collapse-title .expand-icon {
+    transform: rotate(90deg);
+}
+
+.recipe-row {
+    cursor: pointer;
+}
+
+.recipe-row:hover {
+    background-color: rgba(0, 0, 0, 0.03);
+}
+
+.input.input-sm {
+    height: 2rem;
+    min-height: 2rem;
+    font-size: 0.875rem;
+}
+
+.btn-outline {
+    border-width: 1px;
+}
+
+.btn-outline:hover {
+    border-color: transparent;
+}
+
+@media (prefers-color-scheme: dark) {
+    .recipe-row:hover {
+        background-color: rgba(255, 255, 255, 0.05);
+    }
+
+    .ingredients-row,
+    .recipe-row {
+        border-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .collapse {
+        background-color: rgba(0, 0, 0, 0.2);
+    }
+}
+
+@media (max-width: 768px) {
+    .cart-container {
+        padding: 0.75rem;
+    }
+
+    .collapse-content {
+        padding: 0.75rem !important;
+    }
+
+    .card-body {
+        padding: 1rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .table thead {
+        display: none;
+    }
+
+    .table tbody tr {
+        display: block;
+        margin-bottom: 1rem;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        border-radius: 0.5rem;
+    }
+
+    .recipe-row td {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        padding: 0.5rem;
+        text-align: right;
+    }
+
+    .recipe-row td:before {
+        content: attr(data-label);
+        text-align: left;
+        font-weight: 600;
+    }
+
+    .recipe-row td:first-child {
+        display: block;
+        grid-column: 1 / -1;
+        text-align: left;
+        font-weight: bold;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .ingredients-row td {
+        display: block;
+        padding: 0 !important;
+    }
+
+    .collapse-content {
+        padding: 0.5rem !important;
+    }
+
+    .table tbody tr.ingredients-row {
+        margin-bottom: 0;
+        border: none;
+    }
+
+    .grid.grid-cols-1.md\:grid-cols-2 {
+        grid-template-columns: 1fr;
+    }
+}

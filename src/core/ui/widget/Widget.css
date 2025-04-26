@@ -1,0 +1,81 @@
+.widget-container {
+  position: fixed;
+  top: 10%;
+  left: 0;
+  z-index: 10000;
+}
+
+.widget-button {
+  border-radius: 0 50% 50% 0;
+  height: 4rem;
+  width: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease;
+}
+
+.widget-button svg {
+  margin-left: -0.25rem;
+  height: 1.5rem;
+  width: 1.5rem;
+}
+
+.widget-menu {
+  border-radius: 0 0.75rem 0.75rem 0;
+  width: auto;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  animation: slideIn 0.3s ease-out forwards;
+}
+
+.portions-control {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  width: 100%;
+}
+
+.divider {
+  height: 1px;
+  width: 100%;
+  opacity: 0.3;
+  margin: 0.5rem 0;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .widget-button, .widget-menu {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2), 0 2px 4px -1px rgba(0, 0, 0, 0.1);
+  }
+
+  .portions-control {
+    background-color: rgba(255, 255, 255, 0.05);
+  }
+}
+
+@media (max-width: 640px) {
+  .widget-container {
+    top: auto;
+    bottom: 5%;
+  }
+
+  .widget-button {
+    height: 3.5rem;
+    width: 2.75rem;
+  }
+
+  .widget-menu {
+    width: 9rem;
+  }
+}

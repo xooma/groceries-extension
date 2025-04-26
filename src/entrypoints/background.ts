@@ -3,7 +3,6 @@ import { storage } from "wxt/storage";
 import { SaveRecipe } from "@/core/domain";
 
 export default defineBackground(() => {
-  console.log("coucou");
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   browser.runtime.onMessage.addListener(async (message: any) => {
     if (message.type === "reviewList") {
