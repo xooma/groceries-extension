@@ -47,6 +47,13 @@ export default [
     plugins: { "@typescript-eslint": tseslint },
     rules: {
       ...tseslint.configs.recommended.rules,
+      "@typescript-eslint/no-unused-vars": [
+        "error",
+        {
+          args: "all",
+          argsIgnorePattern: "^_",
+        },
+      ],
     },
   },
   {

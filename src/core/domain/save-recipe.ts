@@ -8,9 +8,13 @@ export class SaveRecipe implements UseCase<Promise<void>> {
     const savedRecipes: Array<RecipeJson> =
       (await this.storage.getItem("local:savedRecipes")) || [];
 
-    if (!savedRecipes.includes(recipe)) {
+    if (!this.recipeExists(savedRecipes, recipe)) {
       savedRecipes.push(recipe);
       await this.storage.setItem("local:savedRecipes", savedRecipes);
     }
+  }
+
+  recipeExists(savedRecipes: RecipeJson[], recipe: RecipeJson) {
+    return savedRecipes.some((savedRecipe) => savedRecipe.name === recipe.name);
   }
 }
