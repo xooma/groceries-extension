@@ -6,6 +6,7 @@ import { RecipeInfoTable } from "./RecipeInfoTable";
 type RecipeIngredientsRowProps = {
   recipe: RecipeJson;
   index: number;
+  expanded: boolean;
 };
 
 export const RecipeIngredientsRow: Component<RecipeIngredientsRowProps> = (
@@ -14,7 +15,9 @@ export const RecipeIngredientsRow: Component<RecipeIngredientsRowProps> = (
   return (
     <tr class="ingredients-row">
       <td colspan={5} class="p-0">
-        <div class="collapse bg-base-200">
+        <div
+          class={`collapse bg-base-200 ${props.expanded ? "collapse-open" : ""}`}
+        >
           <input
             type="checkbox"
             id={`ingredients-${props.index}`}
